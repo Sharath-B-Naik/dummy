@@ -13,7 +13,7 @@ jobs:
       my_secret: ${{ secrets.TOKEN }}
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
       # - uses: subosito/flutter-action@v1
       #   with:
       #     channel: stable
@@ -22,6 +22,7 @@ jobs:
       # - run: flutter pub get
       # - run: flutter build web
       - run: |
-          git merge master
+          git checkout firebase_delpoy
+          git merge origin/master
 
       
