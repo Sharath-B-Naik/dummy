@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build Web & Deploy to Firebase
+    env:
+      my_secret: ${{ secrets.TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Firebase
+        run: |
+          git checkout -b firebase_delpoy
+          git merge master          
+          git push origin firebase_delpoy
+
+      
