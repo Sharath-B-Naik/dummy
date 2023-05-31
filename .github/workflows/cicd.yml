@@ -8,13 +8,12 @@ on:
 
 jobs:
   build:
-    name: Build Web & Deploy to Firebase
+    name: Merge into delpoying branch
     env:
       my_secret: ${{ secrets.TOKEN }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Firebase
-        run: |
+      - run: |
           git checkout -b firebase_delpoy
           git merge master          
           git push origin firebase_delpoy
