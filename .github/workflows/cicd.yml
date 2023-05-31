@@ -2,9 +2,14 @@ on:
   push:
     branches: 
       - master
+    paths-ignore:
+      - '.github/'
+       
   pull_request:
     branches:
       - master
+    paths-ignore:
+        - '.github/'
 
 jobs:
   build:
@@ -18,11 +23,11 @@ jobs:
       #   with:
       #     channel: stable
       # - run: flutter config --enable-web
-      # - run: flutter upgrade
+      - run: echo "Hello"
       # - run: flutter pub get
       # - run: flutter build web
-      - run: |
-          git checkout firebase_delpoy
-          git merge origin/master
+      # - run: |
+      #     git checkout firebase_delpoy
+      #     git merge origin/master
 
       
