@@ -22,15 +22,14 @@ jobs:
       - run: flutter pub get
       - run: flutter build web
       - run: |
-          cd build/web
           git init
           git config --global user.email sharathnaik89@gmail.com
           git config --global user.name sharath-b-naik
           git config --global init.defaultBranch master
           git remote add origin https://${{ secrets.TOKEN }}@github.com/sharath-b-naik/dummy.git
-          git checkout -b gh-pages
+          git checkout -b fire-delpoy
           git add --all
           git commit -m "update"
-          git push origin gh-pages -f
+          git push origin fire-delpoy -f
 
       
