@@ -15,7 +15,6 @@ jobs:
     steps:
       - run: |
           git checkout -b firebase_deploy
-          git init
           git config --global user.email sharathnaik89@gmail.com
           git config --global user.name sharath-b-naik
           git config --global init.defaultBranch master
