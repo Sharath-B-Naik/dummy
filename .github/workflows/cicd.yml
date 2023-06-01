@@ -24,6 +24,8 @@ jobs:
           git merge origin/master
           git reset --hard origin/master
 
+
+
   firebase_delpoyment:
     name: Merge into delpoying branch
     # if: github.ref == 'refs/heads/firebase_deploy'
