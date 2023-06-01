@@ -22,10 +22,11 @@ jobs:
           git config --global user.email sharathnaik89@gmail.com
           git config --global user.name sharath-b-naik
           git merge origin/master
+          git reset --hard origin/master
 
   firebase_delpoyment:
     name: Merge into delpoying branch
-    if: github.ref == 'refs/heads/firebase_deploy'
+    # if: github.ref == 'refs/heads/firebase_deploy'
     env:
       my_secret: ${{ secrets.TOKEN }}
     runs-on: ubuntu-latest
@@ -47,3 +48,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FOR_HOSTING_69271 }}'
           channelId: live
           projectId: for-hosting-69271
+      
