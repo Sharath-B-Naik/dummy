@@ -1,0 +1,41 @@
+on:
+  push:
+    branches: 
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Merge into delpoying branch
+    env:
+      my_secret: ${{ secrets.TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: |
+          git checkout firebase_delpoy
+          git config --global user.email sharathnaik89@gmail.com
+          git config --global user.name sharath-b-naik
+          git merge origin/master
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+      - run: flutter config --enable-web
+      - run: flutter upgrade
+      - run: flutter pub get
+      - run: flutter build web
+
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FOR_HOSTING_69271 }}'
+          channelId: live
+          projectId: for-hosting-69271
+
+      
