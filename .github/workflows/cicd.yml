@@ -22,7 +22,7 @@ jobs:
           git config --global user.email sharathnaik89@gmail.com
           git config --global user.name sharath-b-naik
           git merge origin/master
-          git add .
+          git add --all
           git commit -m "Merged from master"
           git push origin firebase_delpoy
 
