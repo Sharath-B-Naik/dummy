@@ -2,10 +2,12 @@ on:
   push:
     branches: 
       - master
+      - firebase_delploy
 
   pull_request:
     branches:
       - master
+      - firebase_delploy
 
 jobs:
   build:
@@ -21,19 +23,9 @@ jobs:
           git config --global user.name sharath-b-naik
           git merge origin/master
 
-      
-on:
-  push:
-    branches: 
-      - firebase_delploy
-
-  pull_request:
-    branches:
-      - firebase_delploy
-
-jobs:
-  build:
+  firebase_delpoyment:
     name: Merge into delpoying branch
+    if: github.ref == 'refs/heads/firebase_deploy'
     env:
       my_secret: ${{ secrets.TOKEN }}
     runs-on: ubuntu-latest
