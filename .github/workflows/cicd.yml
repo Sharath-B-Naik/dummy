@@ -26,7 +26,7 @@ jobs:
 
   firebase_delpoyment:
     name: Merge into delpoying branch
-    if: github.ref == 'refs/heads/firebase_deploy'
+    # if: github.ref == 'refs/heads/firebase_deploy'
     env:
       my_secret: ${{ secrets.TOKEN }}
     runs-on: ubuntu-latest
