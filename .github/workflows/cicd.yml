@@ -2,10 +2,12 @@ on:
   push:
     branches: 
       - master
+      - firebase_delploy
 
   pull_request:
     branches:
       - master
+      - firebase_delploy
 
 jobs:
   build:
@@ -21,6 +23,14 @@ jobs:
           git config --global user.name sharath-b-naik
           git merge origin/master
 
+  firebase_delpoyment:
+    name: Merge into delpoying branch
+    if: github.ref == 'refs/heads/firebase_deploy'
+    env:
+      my_secret: ${{ secrets.TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
         with:
           channel: stable
@@ -37,5 +47,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FOR_HOSTING_69271 }}'
           channelId: live
           projectId: for-hosting-69271
-
-      
